@@ -1,7 +1,9 @@
 package com.example.novelokuma.adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.util.JsonToken;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,7 +48,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerViewAdapter.RecyclerViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull RecyclerViewAdapter.RecyclerViewHolder holder, @SuppressLint("RecyclerView") int position) {
         TextView recyclerTextView = holder.itemView.findViewById(R.id.novelAdiTextView);
         recyclerTextView.setText(arrayListNovelAdi.get(position).novelAdi); // textview nesnesine erişip textine novel adını yerleştirdik
 
@@ -60,6 +62,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 intent.putExtra("novelAdi",arrayListNovelAdi.get(position).novelAdi);
                 intent.putExtra("novelUrl",arrayListNovelResmiUrl.get(position).novelResmi);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
                 view.getContext().startActivity(intent);
 
             }
